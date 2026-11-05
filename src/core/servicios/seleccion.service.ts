@@ -11,10 +11,26 @@ export class SeleccionService {
   private url: string;
 
   constructor(private http: HttpClient) {
-    this.url = `${environment.urlBase}selecciones/`;
+    this.url = `${environment.urlBase}selecciones`;
   }
 
   public listar(): Observable<Seleccion[]> {
     return this.http.get<Seleccion[]>(this.url);
   }
+  public buscar(indice:number, dato: String): Observable<Seleccion[]> {
+    return this.http.get<Seleccion[]>(`${this.url}/${indice}/${dato}`);
+  }
+
+  public agregar(seleccion: Seleccion): Observable<Seleccion> {
+    return this.http.post<Seleccion>(this.url, seleccion);
+  }
+
+  public modificar(seleccion: Seleccion): Observable<Seleccion> {
+    return this.http.put<Seleccion>(this.url, seleccion);
+  }
+
+  public eliminar(idSeleccion: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.url}/${idSeleccion}`);
+  }
+
 }

@@ -2,3 +2,70 @@ mat-toolbar {
   background: #004a9f;
   color: white;
 }
+
+/* Botón del menú */
+.menu-toggle {
+  color: white;
+  background-color: #0066c7;
+  border-radius: 6px;
+  margin-right: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background-color: #1976d2;
+}
+
+/* Icono */
+.menu-toggle mat-icon {
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  height: 48px;
+  padding: 0 16px;
+  gap: 14px;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+
+  border-radius: 0 !important;
+  border: none !important;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Iconos */
+.menu-button img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* Texto */
+.menu-button span {
+  text-align: left;
+  flex: 1;
+}
+
+/* Efecto al pasar el mouse */
+.menu-button:hover {
+  color: #002b5c;
+  background-color: #eaf1f8;
+}
+
+/* Opción seleccionada */
+.menu-button.active {
+  color: #002b5c;
+  background-color: #dce9f5;
+  font-weight: 600;
+  border-left: 4px solid #002b5c !important;
+}

@@ -1,9 +1,27 @@
 <mat-sidenav-container>
-  <mat-sidenav>
+  <mat-sidenav #menuLateral>
+    <mat-nav-list>
+      <div *ngFor="let op of opciones; let i = index">
+        <button
+          mat-button
+          [routerLink]="[op.url]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-button"
+          (click)="menuLateral.toggle()">
 
+          <img [src]="op.icono" [alt]="op.titulo">
+          <span>{{ op.titulo }}</span>
+
+        </button>
+      </div>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
+      <button mat-icon-button class="menu-toggle" (click)="menuLateral.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
       <img src="imagenes/Logo FIFA.jpg" height="80px">
       Campeonatos Mundiales de la FIFA
     </mat-toolbar>

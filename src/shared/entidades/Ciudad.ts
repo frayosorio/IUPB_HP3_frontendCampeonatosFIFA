@@ -1,7 +1,8 @@
-import { Seleccion } from "../../../../../../../../../UNAC/Ingenieria del Software/Ejercicios/Proyecto Campeonatos FIFA/CampeonatosFIFA/src/shared/entidades/Seleccion";
+import {Seleccion} from './Seleccion';
 
 export interface Ciudad {
-    id: number;
-    nombre: string;
-    pais: Seleccion;
+  id: number;
+  nombre: string;
+  pais: Seleccion;
+  idPais: number;
 }

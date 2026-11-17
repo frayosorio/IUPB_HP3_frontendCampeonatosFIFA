@@ -7,6 +7,7 @@ import {SeleccionService} from '../../../core/servicios/seleccion.service';
 import {MatDialog} from '@angular/material/dialog';
 import {SeleccionEditarComponente} from '../seleccion-editar-componente/seleccion-editar-componente';
 import {NgFor} from '@angular/common';
+import {DecidirComponente} from '../../../shared/Componentes/decidir-componente/decidir-componente';
 
 @Component({
   selector: 'app-seleccion-componente',
@@ -122,7 +123,7 @@ export class SeleccionComponente implements OnInit {
           height: '300px',
           data: {
             encabezado: `Editando la selección [${this.seleccionEscogida.nombre}]`,
-            seleccion: this.seleccionEscogida
+            seleccion: {...this.seleccionEscogida}
           },
           disableClose: true
         }
@@ -133,6 +134,9 @@ export class SeleccionComponente implements OnInit {
             this.seleccionServicio.modificar(datos.seleccion).subscribe({
               next: respuesta => {
                 this.selecciones[this.indiceSeleccionEscogida] = respuesta;
+              },
+              error: error => {
+                window.alert(error.message());
               }
             });
           }
@@ -144,6 +148,35 @@ export class SeleccionComponente implements OnInit {
   }
 
   public eliminar() {
-
+    if (this.seleccionEscogida) {
+      const dialogoEliminar = this.dialogoServicio.open(DecidirComponente, {
+          width: '400px',
+          height: '200px',
+          data: {
+            encabezado: `Está seguro de eliminar la selección [${this.seleccionEscogida.nombre}] ?`,
+            id: this.seleccionEscogida.id
+          },
+          disableClose: true
+        }
+      );
+      dialogoEliminar.afterClosed().subscribe({
+        next: datos => {
+          if (datos) {
+            this.seleccionServicio.eliminar(datos.id).subscribe({
+              next: respuesta => {
+                this.listar();
+              },
+              error: error => {
+                if (error.status == 404) {
+                  window.alert("No se puede eliminar la Selección");
+                }
+              }
+            });
+          }
+        }
+      })
+    } else {
+      window.alert("Debe escoger una Selección");
+    }
   }
 }

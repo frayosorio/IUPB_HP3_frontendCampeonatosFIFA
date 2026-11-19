@@ -3,7 +3,7 @@ import {ReferenciasMaterialModule} from '../../../shared/modulos/referencias-mat
 import {FormsModule, NgModel} from '@angular/forms';
 import {ColumnMode, NgxDatatableModule, SelectionType} from '@swimlane/ngx-datatable';
 import {Seleccion} from '../../../shared/entidades/Seleccion';
-import {SeleccionService} from '../../../core/servicios/seleccion.service';
+import {SeleccionServicio} from '../../../core/servicios/seleccion.service';
 import {MatDialog} from '@angular/material/dialog';
 import {SeleccionEditarComponente} from '../seleccion-editar-componente/seleccion-editar-componente';
 import {NgFor} from '@angular/common';
@@ -38,7 +38,7 @@ export class SeleccionComponente implements OnInit {
   public modoColumna = ColumnMode;
   public tipoSeleccion = SelectionType;
 
-  constructor(private seleccionServicio: SeleccionService,
+  constructor(private seleccionServicio: SeleccionServicio,
               private dialogoServicio: MatDialog) {
 
   }

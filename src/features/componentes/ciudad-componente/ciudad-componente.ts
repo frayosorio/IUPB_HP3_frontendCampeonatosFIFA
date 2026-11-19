@@ -4,10 +4,10 @@ import {ColumnMode, NgxDatatableModule, SelectionType} from '@swimlane/ngx-datat
 import {MatDialog} from '@angular/material/dialog';
 import {CiudadEditarComponente} from '../ciudad-editar-componente/ciudad-editar-componente';
 import {DecidirComponente} from '../../../shared/Componentes/decidir-componente/decidir-componente';
-import {CiudadServicio} from '../../../core/servicios/ciudad-servicio';
+import {CiudadServicio} from '../../../core/servicios/ciudad.servicio';
 import {ReferenciasMaterialModule} from '../../../shared/modulos/referencias-material.module';
 import {FormsModule} from '@angular/forms';
-import {SeleccionService} from '../../../core/servicios/seleccion.service';
+import {SeleccionServicio} from '../../../core/servicios/seleccion.service';
 import {Seleccion} from '../../../shared/entidades/Seleccion';
 
 @Component({
@@ -40,7 +40,7 @@ export class CiudadComponente {
   public tipoSeleccion = SelectionType;
 
   constructor(private ciudadServicio: CiudadServicio,
-              private paisServicio: SeleccionService,
+              private paisServicio: SeleccionServicio,
               private dialogoServicio: MatDialog) {
 
   }

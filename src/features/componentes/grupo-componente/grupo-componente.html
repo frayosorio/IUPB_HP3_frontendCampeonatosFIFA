@@ -1,0 +1,27 @@
+<mat-toolbar class="barraTituloCRUD">
+  <img src="iconos/Grupo.png">
+  <div class="barraTituloCRUD">
+    Grupos
+  </div>
+</mat-toolbar>
+
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Campeonato</mat-label>
+    <mat-select [(value)]="campeonatoEscogido" (selectionChange)="listarGrupos()">
+      <mat-option *ngFor="let c of campeonatos" [value]="c">
+        {{c.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+  <button matButton="filled" (click)="agregar()">Agregar</button>
+  <button matButton="tonal" (click)="modificar()">Modificar</button>
+  <button matButton="outlined" (click)="eliminar()">Eliminar</button>
+  <ngx-datatable [rows]="grupos" class="dark" [columns]="columnas"
+                 [headerHeight]="50" [footerHeight]="50" [limit]="10"
+                 [columnMode]="modoColumna.force" [selectionType]="tipoSeleccion.single"
+                 (activate)="escoger($event)"
+  ></ngx-datatable>
+</div>

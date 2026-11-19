@@ -7,7 +7,7 @@ import {Seleccion} from '../../shared/entidades/Seleccion';
 @Injectable({
   providedIn: 'root',
 })
-export class SeleccionService {
+export class SeleccionServicio {
   private url: string;
 
   constructor(private http: HttpClient) {
